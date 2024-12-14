@@ -10,42 +10,23 @@ from logger import get_logger
 
 def simple_model():
     model = nn.Sequential(
-        # First Conv1D Layer with filter size 50, 128 filters, stride 25, no bias
-        # This layer processes the raw input signal
         nn.Conv1d(in_channels=1, out_channels=128, kernel_size=50, stride=25, bias=False),
-        # Batch Normalization for training stability
         nn.BatchNorm1d(num_features=128, eps=0.001, momentum=0.01),
-        # ReLU activation to introduce non-linearity
         nn.ReLU(inplace=True),
-        # Max Pooling to reduce dimensionality
         nn.MaxPool1d(kernel_size=8, stride=8),
-        # Dropout layer to prevent overfitting
         nn.Dropout(p=0.5),
-        # Second Conv1D Layer - point-wise convolution
         nn.Conv1d(in_channels=128, out_channels=128, kernel_size=1, stride=1, bias=False),
-        # Batch Normalization
         nn.BatchNorm1d(num_features=128, eps=0.001, momentum=0.01),
-        # ReLU activation
         nn.ReLU(inplace=True),
-        # Third Conv1D Layer - feature refinement
         nn.Conv1d(in_channels=128, out_channels=128, kernel_size=1, stride=1, bias=False),
-        # Batch Normalization
         nn.BatchNorm1d(num_features=128, eps=0.001, momentum=0.01),
-        # ReLU activation
         nn.ReLU(inplace=True),
-        # Fourth Conv1D Layer - final feature extraction
         nn.Conv1d(in_channels=128, out_channels=128, kernel_size=1, stride=1, bias=False),
-        # Batch Normalization
         nn.BatchNorm1d(num_features=128, eps=0.001, momentum=0.01),
-        # ReLU activation
         nn.ReLU(inplace=True),
-        # Final Max Pooling layer
         nn.MaxPool1d(kernel_size=4, stride=4),
-        # Dropout for regularization
         nn.Dropout(p=0.5),
-        # Flatten the features
         nn.Flatten(),
-        # Final Linear layer for classification
         nn.Linear(in_features=384, out_features=5, bias=False)
     )
     return model
