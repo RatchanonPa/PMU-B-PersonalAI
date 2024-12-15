@@ -93,4 +93,4 @@ xPore เป็น Python Package เปิดให้ใช้ฟรีตั�
 ---
 
 ## **Presentation Video🎤👋​**
-[![Watch the video](http://img.youtube.com/vi/ef1I7rt-30U/hqdefault.jpg)](https://youtu.be/ef1I7rt-30U)
+[![Watch the video]()
